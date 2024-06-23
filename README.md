@@ -21,3 +21,10 @@ Use a preset suitable for the target machine, for example, on Windows:
 cmake --preset x64-Debug-MSVC && cmake --build --preset x64-Debug-MSVC-Build
 ```
 No tests have been performed yet for macOS and Linux.
+
+## TODO
+- Shared library linkage?
+- HDF5 and USD support?
+- Pull request instead of `package-config-and-install.patch`?
+- Are Serializer libraries necessary?
+- Default schema versions?

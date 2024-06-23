@@ -1,8 +1,8 @@
 diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
-index b8e1104..f39d26f 100644
+index 54e3459..de1bd60 100644
 --- a/cmake/CMakeLists.txt
 +++ b/cmake/CMakeLists.txt
-@@ -1168,21 +1168,35 @@ install(FILES ${IFCPARSE_H_FILES}
+@@ -1162,21 +1162,39 @@ install(FILES ${IFCPARSE_H_FILES}
  )
  
  install(TARGETS IfcParse
@@ -16,6 +16,7 @@ index b8e1104..f39d26f 100644
 -    install(FILES ${IFCGEOM_H_FILES}
 -        DESTINATION ${INCLUDEDIR}/ifcgeom
 +    file(GLOB IFCGEOM_HEADER_FILES ../src/ifcgeom/*.h)
++
 +    install(FILES ${IFCGEOM_HEADER_FILES}
 +       DESTINATION ${INCLUDEDIR}/ifcgeom
      )
@@ -23,16 +24,19 @@ index b8e1104..f39d26f 100644
 -    install(FILES ${SCHEMA_AGNOSTIC_H_FILES}
 -        DESTINATION ${INCLUDEDIR}/ifcgeom_schema_agnostic
 +    file(GLOB IFCGEOM_SERIALIZATION_HEADER_FILES ../src/ifcgeom/Serialization/*h)
++
 +    install(FILES ${IFCGEOM_SERIALIZATION_HEADER_FILES}
 +        DESTINATION ${INCLUDEDIR}/ifcgeom/Serialization
 +    )
 +
 +    file(GLOB IFCGEOM_OPENCASCADE_HEADER_FILES ../src/ifcgeom/kernels/opencascade/*h)
++
 +    install(FILES ${IFCGEOM_OPENCASCADE_HEADER_FILES}
 +        DESTINATION ${INCLUDEDIR}/ifcgeom/kernels/opencascade
 +    )
 +
 +    file(GLOB IFCGEOM_MAPPING_HEADER_FILES ../src/ifcgeom/mapping/*h)
++
 +    install(FILES ${IFCGEOM_MAPPING_HEADER_FILES}
 +        DESTINATION ${INCLUDEDIR}/ifcgeom/mapping
      )
@@ -42,17 +46,16 @@ index b8e1104..f39d26f 100644
          ARCHIVE DESTINATION ${LIBDIR}
          LIBRARY DESTINATION ${LIBDIR}
          RUNTIME DESTINATION ${BINDIR}
-@@ -1190,21 +1204,40 @@ if(BUILD_IFCGEOM)
+@@ -1184,21 +1202,41 @@ if(BUILD_IFCGEOM)
  endif(BUILD_IFCGEOM)
  
  if(BUILD_CONVERT)
 -    install(TARGETS Serializers ${SERIALIZER_SCHEMA_LIBRARIES}
-+    install(TARGETS Serializers ${SERIALIZER_SCHEMA_LIBRARIES} geometry_serializer ${geometry_serializer_libraries} 
-         ARCHIVE DESTINATION ${LIBDIR}
-         LIBRARY DESTINATION ${LIBDIR}
-         RUNTIME DESTINATION ${BINDIR}
-     )
- 
+-        ARCHIVE DESTINATION ${LIBDIR}
+-        LIBRARY DESTINATION ${LIBDIR}
+-        RUNTIME DESTINATION ${BINDIR}
+-    )
+-
 -    install(FILES ${SERIALIZERS_FILES}
 +    install(FILES ${SERIALIZERS_H_FILES}
          DESTINATION ${INCLUDEDIR}/serializers/
@@ -62,6 +65,13 @@ index b8e1104..f39d26f 100644
 +    install(FILES ${SERIALIZERS_S_H_FILES}
          DESTINATION ${INCLUDEDIR}/serializers/schema_dependent
      )
++
++    install(TARGETS Serializers ${SERIALIZER_SCHEMA_LIBRARIES} geometry_serializer ${geometry_serializer_libraries} 
++        EXPORT IfcOpenShellTargets
++        ARCHIVE DESTINATION ${LIBDIR}
++        LIBRARY DESTINATION ${LIBDIR}
++        RUNTIME DESTINATION ${BINDIR}
++    )
  endif(BUILD_CONVERT)
  
 +install(EXPORT IfcOpenShellTargets

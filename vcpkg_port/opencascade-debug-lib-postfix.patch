@@ -1,0 +1,29 @@
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index d2f2b15..b8e1104 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -410,7 +410,7 @@ if(BUILD_IFCGEOM)
+         message(STATUS "Looking for Open CASCADE library files in: ${OCC_LIBRARY_DIR}")
+     endif()
+ 
+-    find_library(libTKernel NAMES TKernel TKerneld PATHS ${OCC_LIBRARY_DIR} NO_DEFAULT_PATH)
++    find_library(libTKernel NAMES TKernel PATHS ${OCC_LIBRARY_DIR} NO_DEFAULT_PATH)
+ 
+     if(libTKernel)
+         message(STATUS "Required Open Cascade Library files found")
+@@ -422,14 +422,13 @@ if(BUILD_IFCGEOM)
+     # TODO Extract this into macro/function
+     foreach(lib ${OPENCASCADE_LIBRARY_NAMES})
+         # Make sure we'll handle the Windows/MSVC debug postfix convention too.
+-        string(REPLACE TKerneld "${lib}" lib_path "${libTKernel}")
++        string(REPLACE TKernel "${lib}" lib_path "${libTKernel}")
+         string(REPLACE TKernel "${lib}" lib_path "${lib_path}")
+         list(APPEND OPENCASCADE_LIBRARIES "${lib_path}")
+     endforeach()
+ 
+     if(MSVC)
+         add_definitions(-DHAVE_NO_DLL)
+-        add_debug_variants(OPENCASCADE_LIBRARIES "${OPENCASCADE_LIBRARIES}" d)
+     endif()
+ 
+     if(WIN32)

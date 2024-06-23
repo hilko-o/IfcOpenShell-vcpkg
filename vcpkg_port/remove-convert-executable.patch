@@ -1,0 +1,17 @@
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index f39d26f..70951bb 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -1069,12 +1069,6 @@ if(BUILD_CONVERT)
+         # but probably a good indication of whether RPATHs are necessary.
+         SET_INSTALL_RPATHS(IfcConvert "${IFCOPENSHELL_LIBRARY_DIR};${OCC_LIBRARY_DIR};${Boost_LIBRARY_DIRS};${OPENCOLLADA_LIBRARY_DIR}")
+     endif()
+-
+-    install(TARGETS IfcConvert
+-        ARCHIVE DESTINATION ${LIBDIR}
+-        LIBRARY DESTINATION ${LIBDIR}
+-        RUNTIME DESTINATION ${BINDIR}
+-    )
+ endif(BUILD_CONVERT)
+ 
+ # IfcGeomServer

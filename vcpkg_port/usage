@@ -1,0 +1,10 @@
+IfcOpenShell provides CMake targets:
+
+  find_package(IfcOpenShell CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE IfcOpenShell::IfcParse)
+  target_link_libraries(main PRIVATE IfcOpenShell::IfcGeom)
+  target_link_libraries(main PRIVATE IfcOpenShell::geometry_kernel_opencascade)
+  target_link_libraries(main PRIVATE IfcOpenShell::geometry_mapping_ifc${Schema})
+  target_link_libraries(main PRIVATE IfcOpenShell::geometry_serializer)
+  target_link_libraries(main PRIVATE IfcOpenShell::geometry_serializer_ifc${Schema})
+

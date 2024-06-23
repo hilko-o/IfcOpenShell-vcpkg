@@ -1,0 +1,15 @@
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 8315066..d2f2b15 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -339,6 +339,10 @@ if(BUILD_IFCGEOM)
+ 
+     # Open CASCADE
+     if(WITH_OPENCASCADE)
++        find_package(OpenCASCADE)
++        if(OpenCASCADE_FOUND)
++            set(OCC_INCLUDE_DIR ${OpenCASCADE_INCLUDE_DIR})
++        endif()
+     if("${OCC_INCLUDE_DIR}" STREQUAL "")
+         find_path(OCC_INCLUDE_DIR Standard_Version.hxx
+             PATHS

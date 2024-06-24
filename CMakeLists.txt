@@ -37,18 +37,11 @@ target_link_libraries(IfcParseExamples PRIVATE
 ########################### IFCPARSE ###########################
 
 ########################### IFCGEOM ###########################
-# file(GLOB OPENCASCADE_LIB_FILES "${OpenCASCADE_LIBRARY_DIR}/*.lib")
-
 add_executable(IfcOpenHouse IfcOpenHouse.cpp) 
 
 target_include_directories(IfcOpenHouse PRIVATE
      ${OpenCASCADE_INCLUDE_DIR}
 )
-
-#target_link_directories(IfcOpenHouse PRIVATE
-    # "C:/dev/vcpkg/installed/x64-windows/lib"
-    # ${OpenCASCADE_LIBRARY_DIR}
-#)
 
 target_link_libraries(IfcOpenHouse PRIVATE
     IfcOpenShell::IfcParse
@@ -61,20 +54,12 @@ target_link_libraries(IfcOpenHouse PRIVATE
     # IfcOpenShell::Serializers_ifc2x3
 )
 
-# foreach(LIBRARY_FILE ${OPENCASCADE_LIB_FILES})
-#     get_filename_component(LIBRARY_NAME ${LIBRARY_FILE} NAME_WE)
-#     target_link_libraries(IfcOpenHouse PRIVATE ${LIBRARY_NAME})
-# endforeach()
-
 ################################################################
 add_executable(IfcAdvancedHouse IfcAdvancedHouse.cpp) 
+
 target_include_directories(IfcAdvancedHouse PRIVATE
      ${OpenCASCADE_INCLUDE_DIR}
 )
-
-#target_link_directories(IfcAdvancedHouse PRIVATE
-    # ${OpenCASCADE_LIBRARY_DIR}
-#)
 
 target_link_libraries(IfcAdvancedHouse PRIVATE
     IfcOpenShell::IfcParse

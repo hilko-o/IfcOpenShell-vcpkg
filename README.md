@@ -21,8 +21,3 @@ Use a preset suitable for the target machine, for example, on Windows:
 cmake --preset x64-Debug-MSVC && cmake --build --preset x64-Debug-MSVC-Build
 ```
 No tests have been performed yet for macOS and Linux.
-
-## TODO
-- Pull request instead of `package-config-and-install.patch`?
-- Are Serializer libraries necessary?
-- Write version file

@@ -4,7 +4,7 @@ Testing [vcpkg](https://vcpkg.io/en/)-port for [IfcOpenShell](https://github.com
 ## Prerequisites
 [Vcpkg-Setup](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-cmd)
 
-After setting up vcpkg (the VCPKG_ROOT path must be set) and cloning this repository, copy all files in the `vcpkg_port` directory to `${VCPKG_ROOT}/ports/ifcopenshell` and run:
+After setting up vcpkg and cloning this repository, copy all files in the `vcpkg_port` directory to `${VCPKG_ROOT}/ports/ifcopenshell` and run:
 ```
 vcpkg install ifcopenshell
 ```

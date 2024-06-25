@@ -11,7 +11,7 @@ vcpkg install ifcopenshell
 For compile-time reasons, schemas are currently reduced to IFC2x3 but can be easily changed in the `portfile.cmake`.
 
 ## Testing
-
+Set the toolchain filepath in `CMakePresets.json`.
 From the root directory of this repository, run:
 ```
 cmake --preset <configure-preset-name> && cmake --build --preset <build-preset-name>

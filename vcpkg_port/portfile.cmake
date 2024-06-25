@@ -10,7 +10,6 @@ vcpkg_from_github(
         "find-opencascade.patch"
         "opencascade-debug-lib-postfix.patch"
         "package-config-and-install.patch"
-        "remove-convert-executable.patch"
 )
 
 file(COPY "${CMAKE_CURRENT_LIST_DIR}/Config.cmake.in" DESTINATION "${SOURCE_PATH}/cmake")
@@ -19,11 +18,11 @@ vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}/cmake"
     OPTIONS
         -DMINIMAL_BUILD=ON
-        -DBUILD_CONVERT=ON
+        -DBUILD_CONVERT=OFF
         -DBUILD_EXAMPLES=OFF
         -DCITYJSON_SUPPORT=OFF
         "-DSCHEMA_VERSIONS=2x3"
-        #"-DSCHEMA_VERSIONS=2x3;4"
+        #"-DSCHEMA_VERSIONS=2x3;4;4x3_add2"
 )
 
 vcpkg_cmake_install()

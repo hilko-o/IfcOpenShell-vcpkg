@@ -15,6 +15,7 @@
     },
     "boost",
     "opencascade",
-    "eigen3"
+    "eigen3",
+    "zlib"
   ]
 }
